@@ -4,7 +4,6 @@ import {StyleSheet, Text, View, TextInput, SafeAreaView, Alert} from 'react-nati
 import {Button, Input, SocialIcon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
-
 export default class Login extends Component{
   render(){
     return(
