@@ -14,7 +14,7 @@ export default class Login extends Component{
           {/*View per i campi di testo */}
             <View style = {styles.inputs}> 
             <Input placeholder='Email address' inputContainerStyle={{bottom: 20}} inputStyle={{color: 'white'}}/>
-            <Input placeholder='Password' inputContainerStyle={{top: 10}} inputStyle={{color: 'white'}}/>
+            <Input placeholder='Password' secureTextEntry={true} inputContainerStyle={{top: 10}} inputStyle={{color: 'white'}}/>
             </View>
             <View style= {styles.button}>
               <Button
