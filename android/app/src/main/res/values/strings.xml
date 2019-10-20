@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SitaelPolibaApp</string>
+    <string name="facebook_app_id">667291557094265</string> <string name="fb_login_protocol_scheme">fb667291557094265</string>
 </resources>

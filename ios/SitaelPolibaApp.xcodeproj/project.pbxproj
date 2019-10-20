@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SitaelPolibaAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SitaelPolibaAppTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -15,10 +16,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* SitaelPolibaAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SitaelPolibaAppTests.m */; };
-		3212AD42CB9577113C77BA7A /* libPods-SitaelPolibaApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EB110238F7583EE4217B7D /* libPods-SitaelPolibaApp.a */; };
 		3FC00544BDC1FDBA3B601373 /* libPods-SitaelPolibaAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 902C66BB08BCFDDC33F4CE9E /* libPods-SitaelPolibaAppTests.a */; };
 		8CF96B0BECDD6C22FE2BFB6A /* libPods-SitaelPolibaApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2B4426C023ED1CDEB5D702 /* libPods-SitaelPolibaApp-tvOS.a */; };
 		F884F4C4C5037DE9AB362070 /* libPods-SitaelPolibaApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2ED84CAAFD23FD5653BCF7 /* libPods-SitaelPolibaApp-tvOSTests.a */; };
+		FA30FB7B096FE3F17CF2B56E /* libPods-SitaelPolibaApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EB110238F7583EE4217B7D /* libPods-SitaelPolibaApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,10 @@
 		902C66BB08BCFDDC33F4CE9E /* libPods-SitaelPolibaAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SitaelPolibaAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2ADDB0CA381DBF43DE2E322 /* Pods-SitaelPolibaApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitaelPolibaApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SitaelPolibaApp-tvOSTests/Pods-SitaelPolibaApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A2FA4E09CA26FBBD27F3DC44 /* Pods-SitaelPolibaApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitaelPolibaApp.debug.xcconfig"; path = "Target Support Files/Pods-SitaelPolibaApp/Pods-SitaelPolibaApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B34E4E3E235CB1BA00C217D6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		B34E4E3F235CB1BA00C217D6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		B34E4E40235CB1BA00C217D6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		B34E4E41235CB1BA00C217D6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D52C04926B31B3F9FEC46DDB /* Pods-SitaelPolibaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitaelPolibaApp.release.xcconfig"; path = "Target Support Files/Pods-SitaelPolibaApp/Pods-SitaelPolibaApp.release.xcconfig"; sourceTree = "<group>"; };
 		E9209B9807FA96825760D170 /* Pods-SitaelPolibaApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitaelPolibaApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SitaelPolibaApp-tvOSTests/Pods-SitaelPolibaApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		EC2ED84CAAFD23FD5653BCF7 /* libPods-SitaelPolibaApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SitaelPolibaApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3212AD42CB9577113C77BA7A /* libPods-SitaelPolibaApp.a in Frameworks */,
+				FA30FB7B096FE3F17CF2B56E /* libPods-SitaelPolibaApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +143,10 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B34E4E41235CB1BA00C217D6 /* Bolts.framework */,
+				B34E4E40235CB1BA00C217D6 /* FBSDKCoreKit.framework */,
+				B34E4E3E235CB1BA00C217D6 /* FBSDKLoginKit.framework */,
+				B34E4E3F235CB1BA00C217D6 /* FBSDKShareKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				88EB110238F7583EE4217B7D /* libPods-SitaelPolibaApp.a */,
@@ -297,7 +306,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = ZV6WP2GUK4;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = ZV6WP2GUK4;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -490,6 +503,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SitaelPolibaApp/Pods-SitaelPolibaApp-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -509,6 +523,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -639,6 +654,7 @@
 			baseConfigurationReference = EDF3B9FB677CE39A5A2D4734 /* Pods-SitaelPolibaAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ZV6WP2GUK4;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -663,6 +679,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = ZV6WP2GUK4;
 				INFOPLIST_FILE = SitaelPolibaAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -684,6 +701,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = ZV6WP2GUK4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SitaelPolibaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -703,6 +725,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZV6WP2GUK4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SitaelPolibaApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -857,6 +884,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /Users/giorgiomannarini/Documents/FacebookSDK;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -875,6 +903,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -910,6 +939,8 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /Users/giorgiomannarini/Documents/FacebookSDK;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -920,6 +951,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -3,6 +3,9 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, SafeAreaView, Alert} from 'react-native';
 import {Button, Input, SocialIcon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+
+
 
 export default class Login extends Component{
   render(){
@@ -11,38 +14,38 @@ export default class Login extends Component{
           colors={['#4258d4', '#429cd4', '#2a5958']}
           style = {styles.container}>
           <SafeAreaView> 
-          {/*View per i campi di testo */}
-            <View style = {styles.inputs}> 
-            <Input placeholder='Email address' inputContainerStyle={{bottom: 20}} inputStyle={{color: 'white'}}/>
-            <Input placeholder='Password' secureTextEntry={true} inputContainerStyle={{top: 10}} inputStyle={{color: 'white'}}/>
-            </View>
-            <View style= {styles.button}>
-              <Button
-              title= "Login"
-              borderRadius
-              buttonStyle={{backgroundColor: 'white', borderRadius: 15, bottom: 330}}
-              titleStyle={{color: '#429cd4'}}
-              onPress={() => Alert.alert('Simple Button pressed')}>
-              </Button>
-              <SocialIcon
-              title='Sign In With Facebook'
-              button
-              type='facebook'
-              style = {{bottom: 50}}
-              />
-              <SocialIcon
-              title='Sign In With Google'
-              button
-              type='google'
-              style = {{bottom: 40}}
-              />
+            <View>
+              <LoginButton //Nota: posso implementare la logica anche in un altro elemento
+              
+              publishPermissions={["email"]}
+              //style={{bottom: 60}}
+              onLoginFinished={
+              (error, result) => {
+              if (error) {
+                alert("Login failed with error: " + error.message);
+              } else if (result.isCancelled) {
+                alert("Login was cancelled");
+              } else {
+                //alert("Login was successful with permissions: " + result.grantedPermissions)
+                AccessToken.getCurrentAccessToken().then((data) => {
+                  alert(data.accessToken.toString())
+                });
+  
+              }
+            }
+          }
+          onLogoutFinished={() => alert("User logged out")}/>
+              
             </View>
           </SafeAreaView>
 
         </LinearGradient>
     );
   }
-}
+};
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -50,22 +53,4 @@ const styles = StyleSheet.create({
     justifyContent: "center", 
     alignItems: "center", 
   },
-  inputs: {
-    flex: 1,
-    justifyContent: "flex-start", 
-    padding: 100,
-    marginHorizontal: -100,
-    height: 100,
-  },
-  button: {
-    bottom: 60,
-    padding: 15,
-    fontSize: 15,
-    fontFamily: "arial",
-    width: 350,
-    height: 100,
-  
-
-      }
-    
 });
