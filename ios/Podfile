@@ -39,6 +39,8 @@ target 'SitaelPolibaApp' do
 	
 
   
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'SitaelPolibaAppTests' do
     inherit! :search_paths
     # Pods for testing
