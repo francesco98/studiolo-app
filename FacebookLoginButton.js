@@ -9,7 +9,7 @@ class FacebookLoginButton extends Component{
         return(
             <Button
                 title = "Login with Facebook"
-                buttonStyle={{backgroundColor: 'white', padding: 10, paddingHorizontal: 25}}
+                buttonStyle={{backgroundColor: 'white', padding: 10, paddingHorizontal: 25, marginBottom: 10, justifyContent: 'flex-start'}}
                 titleStyle={styles.title}
                 onPress= {fbLogin}
                 icon={<Icon 
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     color: '#3b5998', 
     padding: 5, 
     paddingLeft: 25, 
+    fontFamily: "Lato-Light",
     fontVariant: ['small-caps'], 
-    textTransform: 'capitalize', 
-    fontFamily: "Lato-Regular"
+    textTransform: 'capitalize',
   },
 });
