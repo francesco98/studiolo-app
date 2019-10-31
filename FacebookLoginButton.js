@@ -5,13 +5,22 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {ReactNative, StyleSheet} from 'react-native';
 
 class FacebookLoginButton extends Component{
+     
     render(){
+        
         return(
             <Button
                 title = "Login with Facebook"
                 buttonStyle={{backgroundColor: 'white', padding: 10, paddingHorizontal: 25, marginBottom: 10, justifyContent: 'flex-start'}}
                 titleStyle={styles.title}
-                onPress= {fbLogin}
+                onPress= {() => {
+                    fbLogin().then((success) => {
+                        if(success) {
+                            this.props.navigation('Signup', {});
+                        }
+                    });
+                    
+                }}
                 icon={<Icon 
                     name= "facebook-square"
                     size= {45}

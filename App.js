@@ -1,43 +1,25 @@
-//Static login screen
+import { createStackNavigator} from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
+import Login from './Login';
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, SafeAreaView, Image} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import FacebookLoginButton from './FacebookLoginButton';
-import GoogleLoginButton from './GoogleLoginButton';
+import SignupPage from './Signup';
 
-export default class Login extends Component{
-  render(){
-    return(
-       <LinearGradient 
-          colors={['#3e50b2', '#009788']}
-          style = {styles.container}>
-          <SafeAreaView> 
-            <View style={styles.container}>
-              <View />
-              <Image source={require('./assets/images/LogoStudiolo.png')} style= {styles.logo} />
-              <View>
-                <FacebookLoginButton />
-                <GoogleLoginButton />
-              </View>
-            </View>
-          </SafeAreaView>
-
-        </LinearGradient>
-    );
+class App extends Component {
+  render() {
+    return (
+      Login()
+    )
   }
-};
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: "center", 
+}
+// Create Stack Navigator gets two props createStackNavigator(routes, config)
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: Login
   },
-  logo: {
-    width: 250,
-    height: 65
+  Signup: {
+    screen: SignupPage
   }
-});
+})
+// Container of the app
+const AppContainer = createAppContainer(AppNavigator)
+export default AppContainer
