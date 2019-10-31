@@ -5,11 +5,7 @@ export default class SignupPage extends Component{
     static navigationOptions = {  
         title: 'Signup',  
         headerStyle: {  
-            backgroundColor: '#f4511e',  
-        },  
-        //headerTintColor: '#0ff',  
-        headerTitleStyle: {  
-            fontWeight: 'bold',  
+            display: 'none',
         },  
     };  
     render() {  
