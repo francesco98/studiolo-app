@@ -1,27 +1,34 @@
-import {LoginManager, AccessToken } from 'react-native-fbsdk';
-
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import Costants from 'Costants.js';
 
 const fbLogin = () => {
   LoginManager.logInWithPermissions(['public_profile', 'email']).then(
-    (result) => {
+    result => {
       if (result.isCancelled) {
-        alert('Login cancelled');
+        alert('Login cancelled')
       } else {
-        alert('Login success with permissions: ' + JSON.stringify(result));
-        
-        AccessToken.getCurrentAccessToken().then((data) => {
-            //Da passare dati al server
-          console.log(data);
-          console.log(data.accessToken.toString());
-          console.log(result.grantedPermissions);
-          alert(data.accessToken.toString())
-        });
+        alert('Login success with permissions: ' + JSON.stringify(result))
 
+        AccessToken.getCurrentAccessToken().then(data => {
+          const token = data.accessToken.toString()
+          fetch(Costants.baseUrl+Costants.loginFacebookUrl, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              input_token: token,
+            })
+          }).then((response) => {
+            console.log(response.json());
+          })
+        })
       }
     },
-    (error) => {
-      alert('Login fail with error: ' + error);
+    error => {
+      alert('Login fail with error: ' + error)
     }
-  );
+  )
 }
-export default fbLogin;
+export default fbLogin
