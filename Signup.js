@@ -1,7 +1,9 @@
 import React, {Component} from 'react';  
-import { StyleSheet, View, Text, ScrollView, Dimensions, TextInput} from 'react-native'; 
+import { StyleSheet, View, Text, ScrollView, Dimensions, BackHandler,} from 'react-native'; 
 import {Button, Input} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
+
+
 
 
 export default class SignupPage extends Component{
@@ -13,6 +15,17 @@ export default class SignupPage extends Component{
             display: 'none',
         },  
     };  
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+    }
+
+    handleBackButton() {
+        return true;
+    }
     render() {  
         let screenWidth = Dimensions.get('window').width;
         let screenHeight = Dimensions.get('window').height;

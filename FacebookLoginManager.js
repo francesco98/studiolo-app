@@ -10,7 +10,7 @@ const fbLogin = (name, surname, email, provatoken) => {
           alert('Login cancelled')
           success(false);
         } else {
-          alert('Login success with permissions: ' + JSON.stringify(result))
+          //alert('Login success with permissions: ' + JSON.stringify(result))
           success(true);
 
           // AccessToken.getCurrentAccessToken().then(data => {
