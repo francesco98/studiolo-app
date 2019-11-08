@@ -11,13 +11,7 @@ export default class Login extends Component{
         headerStyle: {
           display: 'none',
         }}
-    constructor(props) {  
-        //constructor to set default state  
-        super(props);  
-        this.state = { 
-            
-        }; 
-    }
+    
   render(){
     const { navigate } = this.props.navigation;
     return(
