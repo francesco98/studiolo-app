@@ -1,8 +1,9 @@
 import { createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
-import Login from './Login';
 import React, {Component} from 'react';
-import SignupPage from './Signup';
+
+import SignupPage from './View/Screen/Signup';
+import Login from './View/Screen/Login';
 
 class App extends Component {
   render() {

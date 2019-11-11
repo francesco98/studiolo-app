@@ -198,19 +198,19 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
   - React-jsinspector (0.61.2)
-  - react-native-fbsdk (1.0.4):
+  - react-native-fbsdk (1.1.1):
     - React
-    - react-native-fbsdk/Core (= 1.0.4)
-    - react-native-fbsdk/Login (= 1.0.4)
-    - react-native-fbsdk/Share (= 1.0.4)
-  - react-native-fbsdk/Core (1.0.4):
-    - FBSDKCoreKit (~> 5.5)
+    - react-native-fbsdk/Core (= 1.1.1)
+    - react-native-fbsdk/Login (= 1.1.1)
+    - react-native-fbsdk/Share (= 1.1.1)
+  - react-native-fbsdk/Core (1.1.1):
+    - FBSDKCoreKit (= 5.8)
     - React
-  - react-native-fbsdk/Login (1.0.4):
-    - FBSDKLoginKit (~> 5.5)
+  - react-native-fbsdk/Login (1.1.1):
+    - FBSDKLoginKit (= 5.8)
     - React
-  - react-native-fbsdk/Share (1.0.4):
-    - FBSDKShareKit (~> 5.5)
+  - react-native-fbsdk/Share (1.1.1):
+    - FBSDKShareKit (= 5.8)
     - React
   - React-RCTActionSheet (0.61.2):
     - React-Core/RCTActionSheetHeaders (= 0.61.2)
@@ -374,7 +374,7 @@ SPEC CHECKSUMS:
   React-jsi: 32285a21b1b24c36060493ed3057a34677d58d09
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
-  react-native-fbsdk: 45e28bbab3e905cbc635c0bdd3444b372e933ae9
+  react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e
@@ -391,4 +391,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d22cc36382a50f65a2e535ea08cae438636ba7db
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4
