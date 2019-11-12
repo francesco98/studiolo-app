@@ -7,6 +7,7 @@ class User {
     _firstName = "";
     _lastName = "";
     _token = "";
+    _firstLogin = "";
 
     static getInstance() {
         if (User.myInstance == null) {
@@ -23,6 +24,17 @@ class User {
         this._facebookEmail = data.user.facebookEmail;
         this._firstName = data.user.first_name;
         this._lastName = data.user.last_name;
+        this._firstLogin = data.first_login;
+    }
+
+    initDevelop() {
+        this._token = "Token"
+        this._userID = "UserID";
+        this._facebookID = "FacebookID";
+        this._facebookEmail = "FacebookEmail";
+        this._firstName = "NomeTest";
+        this._lastName = "CognomeTest";
+        this._firstLogin = true;
     }
 
     getUserID() {
@@ -49,8 +61,8 @@ class User {
         return this._token;
     }
 
-    setUserID(id) {
-        this._userID = id;
+    getFirstLogin() {
+        return this._firstLogin;
     }
 
 }

@@ -2,20 +2,16 @@ import { createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
 import React, {Component} from 'react';
 
-import SignupPage from './View/Screen/Signup';
+import Home from './View/Screen/Home';
 import Login from './View/Screen/Login';
+import SignupPage from './View/Screen/Signup';
 
-class App extends Component {
-  render() {
-    return (
-      Login()
-    )
-  }
-}
-// Create Stack Navigator gets two props createStackNavigator(routes, config)
 const AppNavigator = createStackNavigator({
   Home: {
     screen: Login
+  },
+  Dashboard: {
+    screen: Home
   },
   Signup: {
     screen: SignupPage
@@ -23,4 +19,5 @@ const AppNavigator = createStackNavigator({
 })
 // Container of the app
 const AppContainer = createAppContainer(AppNavigator)
+
 export default AppContainer
