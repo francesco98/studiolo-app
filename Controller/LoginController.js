@@ -16,7 +16,7 @@ class LoginController {
           } else {
             this.facebookAccessToken()
               .then(result => resolve(result))
-              .catch(error => reject(result))
+              .catch(error => reject(error))
           }
         },
         error => {

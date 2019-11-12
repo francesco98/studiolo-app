@@ -1,6 +1,6 @@
 class Constants {
   // Server side Endpoint
-  static baseUrl = 'http://localhost:8080'
+  static baseUrl = 'http://posafrancesco.ddns.net:8888/'
   static loginFacebookUrl = '/facebookLogin'
 
   // Key-Value per AsyncStorange
