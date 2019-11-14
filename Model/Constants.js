@@ -1,6 +1,6 @@
 class Constants {
   // Server side Endpoint
-  static baseUrl = 'http://172.20.10.4:8080'
+  static baseUrl = 'http://sitael-poliba-app.herokuapp.com'
   static loginFacebookUrl = '/facebookLogin'
 
   // Key-Value per AsyncStorange

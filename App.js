@@ -9,22 +9,35 @@ import SignupPage from './View/Screen/Signup'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Placeholder from './View/Screen/Placeholder'
 import HomePage from './View/Screen/Home'
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 
 const TabNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: HomePage
+      screen: HomePage,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) => (
+          <Icon name="home" size={30} color={tintColor} />
+      )
+      }
+      
     },
     Placeholder: {
-      screen: Placeholder
+      screen: Placeholder,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) => (
+          <Icon name="cogs" size={30} color={tintColor} />
+      )
+      }
     }
   },
   {
     tabBarOptions: {
-      labelStyle: {
-        fontSize: 12,
-        marginBottom: 10
-      },
+      //showIcon: true,
+      activeTintColor: '#009788',
+      inactiveTintColor: 'gray',
+      showLabel: false, 
       style: {
         elevation: 5
       }
@@ -40,8 +53,9 @@ const TabNavigator = createBottomTabNavigator(
 )
 
 const AppNavigator = createStackNavigator({
-  Home: {
-    screen: Login
+  //Home: TabNavigator, //DEVELOPING HOMESCREEN FASTER
+Home: {
+    screen:  Login
   },
   Dashboard: TabNavigator,
   Signup: {

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, SafeAreaView, BackHandler} from 'react-native'
+import { StyleSheet, View, Text, SafeAreaView, BackHandler } from 'react-native'
 import createAppContainer from 'react-navigation'
 import createBottomTabNavigator from 'react-navigation-tabs'
 import Placeholder from './Placeholder'
-
+import AppBar from '../Component/AppBar'
 
 export default class HomePage extends Component {
-   componentDidMount () {
+  componentDidMount () {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButton)
   }
 
@@ -20,10 +20,10 @@ export default class HomePage extends Component {
 
   render () {
     return (
-        <SafeAreaView>
-          <Text>Home</Text>
-        </SafeAreaView>
+      <SafeAreaView>
+        <AppBar/>
+        <Text>Home</Text>
+      </SafeAreaView>
     )
   }
 }
-
