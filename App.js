@@ -1,17 +1,17 @@
-import { createStackNavigator} from 'react-navigation-stack';
-import {createAppContainer} from 'react-navigation';
-import React, {Component} from 'react';
+import { createStackNavigator } from 'react-navigation-stack'
+import { createAppContainer } from 'react-navigation'
+import React, { Component } from 'react'
 
-import Home from './View/Screen/Home';
-import Login from './View/Screen/Login';
-import SignupPage from './View/Screen/Signup';
+import Home from './View/Screen/Home'
+import Login from './View/Screen/Login'
+import SignupPage from './View/Screen/Signup'
 
-import {createBottomTabNavigator} from 'react-navigation-tabs'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Placeholder from './View/Screen/Placeholder'
 import HomePage from './View/Screen/Home'
 
-
-const TabNavigator = createBottomTabNavigator({
+const TabNavigator = createBottomTabNavigator(
+  {
     Home: {
       screen: HomePage
     },
@@ -28,12 +28,16 @@ const TabNavigator = createBottomTabNavigator({
       style: {
         elevation: 5
       }
+    },
+    navigationOptions: {
+      headerLeft: null,
+      gesturesEnabled: false,
+      headerStyle: {
+        display: 'none'
+      }
     }
   }
 )
-
-
-
 
 const AppNavigator = createStackNavigator({
   Home: {
@@ -43,8 +47,6 @@ const AppNavigator = createStackNavigator({
   Signup: {
     screen: SignupPage
   }
-
-
 })
 // Container of the app
 const AppContainer = createAppContainer(AppNavigator)
