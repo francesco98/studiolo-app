@@ -4,6 +4,8 @@ import createAppContainer from 'react-navigation'
 import createBottomTabNavigator from 'react-navigation-tabs'
 import Placeholder from './Placeholder'
 import AppBar from '../Component/AppBar'
+import {ListItem} from 'react-native-elements'
+
 
 export default class HomePage extends Component {
   componentDidMount () {
@@ -17,13 +19,55 @@ export default class HomePage extends Component {
   handleBackButton () {
     return true
   }
+  
 
+  ;
   render () {
     return (
       <SafeAreaView>
         <AppBar/>
-        <Text>Home</Text>
+        <View>
+        <Text style = {styles.text}>Politecnico di Bari</Text>
+        </View>
+        <View>
+        {
+          studentList.map((l, i)=> (
+            <ListItem 
+            key={i}
+            title={l.name}
+            subtitle={l.lastUpdate}
+            badge={{value: l.sits, badgeStyle: { backgroundColor: '#3e50b2'}}} //FAI COLOR
+            bottomDivider
+            chevron
+
+            />
+          ) )
+        }
+        </View>
       </SafeAreaView>
     )
   }
 }
+//CONSTANTS
+const studentList = [
+    {
+      name: 'firstStudent',
+      sits: 14,
+      lastUpdate: '12/12/19'
+    },
+    {
+    name: 'secondStudent',
+    sits: 25,
+    lastUpdate: '12/12/19'
+
+    }
+  ]
+
+  const styles = StyleSheet.create({
+    text:{
+      padding: 30,
+      textAlign: 'center',
+      fontFamily: 'Lato-Light',
+    }
+
+  })

@@ -35,13 +35,10 @@ class LoginController {
           .then(res => res.json())
           .then(data => {
             // Creo l'istanza dell'utente loggato
-            console.log(data);
-            
+
             if (data.result) {
               let user = User.getInstance()
               user.initFromJson(data)
-              console.log(user.getFirstName())
-              console.log(user.getFirstLogin())
             }
 
             // Memorizza il login
