@@ -1,3 +1,5 @@
+import Place from './Place';
+
 class User {
      static myInstance = null;
 
@@ -9,9 +11,11 @@ class User {
     _token = "";
     _firstLogin = "";
 
-    _placeId = "";
     _email = "";
     _matricola = "";
+
+    _place = null;
+    _studentCenter = null;
 
     static getInstance() {
         if (User.myInstance == null) {
@@ -30,19 +34,18 @@ class User {
         this._lastName = data.user.last_name;
         this._firstLogin = data.first_login;
 
-        this._placeId = 1;
-    }
+        if(data.user.matricola) {
+            this._matricola = data.user.matricola;
+        }
 
-    initDevelop() {
-        this._token = "Token"
-        this._userID = "UserID";
-        this._facebookID = "FacebookID";
-        this._facebookEmail = "FacebookEmail";
-        this._firstName = "NomeTest";
-        this._lastName = "CognomeTest";
-        this._firstLogin = true;
+        if(data.user.email) {
+            this._email = data.user.email;
+        }
 
-        this._placeId = 1;
+        if(data.user.place) {
+            this._place = new Place();
+            this._place.initFromJson(data.user.place);
+        }
     }
 
     getUserID() {
@@ -73,8 +76,8 @@ class User {
         return this._firstLogin;
     }
 
-    getPlaceId() {
-        return this._placeId;
+    getPlace() {
+        return this._place;
     }
 
     getEmail() {

@@ -28,7 +28,7 @@ export default class StudentCard extends Component{
             <Badge
               value={this.props.freeSits+'/'+this.props.total}
               textStyle={{ fontFamily: 'Lato-Bold', fontSize: 16 }}
-              badgeStyle={{ width: 50, height: 30, backgroundColor: '#3e50b2' }}
+              badgeStyle={{ width: 60, height: 30, backgroundColor: '#3e50b2' }}
             />
           </View>
           <Text

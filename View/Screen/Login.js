@@ -46,7 +46,7 @@ export default class Login extends Component {
       .then(result => {
         if (result) {
           let user = User.getInstance()
-          console.log(user.getFirstLogin());
+      
           if (user.getFirstLogin()) {
             navigate('Signup', {})
           } else {

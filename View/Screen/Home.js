@@ -10,6 +10,7 @@ import {
 import AppBar from '../Component/AppBar'
 import StudentCard from '../Component/StudentCard'
 import HomeController from '../../Controller/HomeController'
+import User from '../../Model/User';
 
 export default class HomePage extends Component {
   _homeController = new HomeController()
@@ -43,7 +44,11 @@ export default class HomePage extends Component {
       <SafeAreaView>
         <AppBar />
         <View>
-          <Text style={styles.text}>Politecnico di Bari</Text>
+          <Text style={styles.text}>
+            {User.getInstance()
+              .getPlace()
+              .getName()}
+          </Text>
         </View>
         <View style={{}}>
           <FlatList
@@ -54,7 +59,7 @@ export default class HomePage extends Component {
                 freeSits={item.free}
                 data={item.lastUpdateDay}
                 ora={item.lastUpdateHour}
-                total = {item.nposti}
+                total={item.nposti}
               />
             )}
           />
@@ -68,6 +73,7 @@ export default class HomePage extends Component {
 const styles = StyleSheet.create({
   text: {
     padding: 30,
+    fontSize: 20,
     textAlign: 'center',
     fontFamily: 'Lato-Light'
   }
