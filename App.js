@@ -9,7 +9,7 @@ import SignupPage from './View/Screen/Signup'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Placeholder from './View/Screen/Placeholder'
 import HomePage from './View/Screen/Home'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/AntDesign'
 
 
 const TabNavigator = createBottomTabNavigator(
@@ -27,7 +27,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: Placeholder,
       navigationOptions: {
         tabBarIcon: ({tintColor}) => (
-          <Icon name="cogs" size={30} color={tintColor} />
+          <Icon name="setting" size={30} color={tintColor} />
       )
       }
     }
@@ -39,7 +39,8 @@ const TabNavigator = createBottomTabNavigator(
       inactiveTintColor: 'gray',
       showLabel: false, 
       style: {
-        elevation: 5
+        elevation: 5,
+        borderTopColor: "transparent",
       }
     },
     navigationOptions: {

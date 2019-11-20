@@ -9,6 +9,10 @@ class User {
     _token = "";
     _firstLogin = "";
 
+    _placeId = "";
+    _email = "";
+    _matricola = "";
+
     static getInstance() {
         if (User.myInstance == null) {
             User.myInstance = new User();
@@ -25,6 +29,8 @@ class User {
         this._firstName = data.user.first_name;
         this._lastName = data.user.last_name;
         this._firstLogin = data.first_login;
+
+        this._placeId = 1;
     }
 
     initDevelop() {
@@ -35,6 +41,8 @@ class User {
         this._firstName = "NomeTest";
         this._lastName = "CognomeTest";
         this._firstLogin = true;
+
+        this._placeId = 1;
     }
 
     getUserID() {
@@ -63,6 +71,18 @@ class User {
 
     getFirstLogin() {
         return this._firstLogin;
+    }
+
+    getPlaceId() {
+        return this._placeId;
+    }
+
+    getEmail() {
+        return this._email;
+    }
+
+    getMatricola() {
+        return this._matricola;
     }
 
 }

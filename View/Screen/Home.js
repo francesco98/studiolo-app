@@ -1,15 +1,32 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, SafeAreaView, BackHandler } from 'react-native'
-import createAppContainer from 'react-navigation'
-import createBottomTabNavigator from 'react-navigation-tabs'
-import Placeholder from './Placeholder'
+import {
+  StyleSheet,
+  View,
+  Text,
+  SafeAreaView,
+  BackHandler,
+  FlatList
+} from 'react-native'
 import AppBar from '../Component/AppBar'
-import {ListItem} from 'react-native-elements'
-
+import StudentCard from '../Component/StudentCard'
+import HomeController from '../../Controller/HomeController'
 
 export default class HomePage extends Component {
+  _homeController = new HomeController()
+
+  state = { data: [] }
+
   componentDidMount () {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButton)
+
+    this._homeController
+      .getStudentCenterInfo()
+      .then(d => {
+        this.setState({ data: d })
+      })
+      .catch(error => {
+        alert(error)
+      })
   }
 
   componentWillUnmount () {
@@ -19,55 +36,39 @@ export default class HomePage extends Component {
   handleBackButton () {
     return true
   }
-  
 
-  ;
   render () {
+    // TODO: FlatList Styling
     return (
       <SafeAreaView>
-        <AppBar/>
+        <AppBar />
         <View>
-        <Text style = {styles.text}>Politecnico di Bari</Text>
+          <Text style={styles.text}>Politecnico di Bari</Text>
         </View>
-        <View>
-        {
-          studentList.map((l, i)=> (
-            <ListItem 
-            key={i}
-            title={l.name}
-            subtitle={l.lastUpdate}
-            badge={{value: l.sits, badgeStyle: { backgroundColor: '#3e50b2'}}} //FAI COLOR
-            bottomDivider
-            chevron
-
-            />
-          ) )
-        }
+        <View style={{}}>
+          <FlatList
+            data={this.state.data}
+            renderItem={({ item }) => (
+              <StudentCard
+                studentName={item.name}
+                freeSits={item.free}
+                data={item.lastUpdateDay}
+                ora={item.lastUpdateHour}
+                total = {item.nposti}
+              />
+            )}
+          />
         </View>
       </SafeAreaView>
     )
   }
 }
-//CONSTANTS
-const studentList = [
-    {
-      name: 'firstStudent',
-      sits: 14,
-      lastUpdate: '12/12/19'
-    },
-    {
-    name: 'secondStudent',
-    sits: 25,
-    lastUpdate: '12/12/19'
+// CONSTANTS
 
-    }
-  ]
-
-  const styles = StyleSheet.create({
-    text:{
-      padding: 30,
-      textAlign: 'center',
-      fontFamily: 'Lato-Light',
-    }
-
-  })
+const styles = StyleSheet.create({
+  text: {
+    padding: 30,
+    textAlign: 'center',
+    fontFamily: 'Lato-Light'
+  }
+})
