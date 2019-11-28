@@ -40,7 +40,7 @@ export default class InputSignup extends Component {
   render () {
     return (
       <Input
-        containerStyle={{ padding: 10 }}
+        containerStyle={{ padding: 10, }}
         inputContainerStyle={{
           borderBottomWidth: 0,
           borderRadius: 10,

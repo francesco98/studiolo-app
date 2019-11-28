@@ -50,7 +50,7 @@ export default class Login extends Component {
           if (user.getFirstLogin()) {
             navigate('Signup', {})
           } else {
-            navigate('Dashboard', {}) 
+            navigate('Signup', {}) //Dashboard
           }
         } else {
           alert('Errore generale!')

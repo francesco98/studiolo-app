@@ -6,7 +6,8 @@ import {
   ScrollView,
   Dimensions,
   BackHandler,
-  Picker
+  Picker,
+  KeyboardAvoidingView
 } from 'react-native'
 import { Button, Input } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/AntDesign'
@@ -41,7 +42,8 @@ export default class SignupPage extends Component {
   }
   state = {
     universities: [],
-    scelta: 1
+    scelta: 1,
+  
   }
 
   _checkErrors () {
@@ -69,15 +71,18 @@ export default class SignupPage extends Component {
     this._signupController
       .getUniversities()
       .then(universities => this.setState({ universities: universities }))
+  
   }
 
   componentWillUnmount () {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton)
+  
   }
 
   handleBackButton () {
     return true
   }
+  
 
   render () {
     let screenWidth = Dimensions.get('window').width
@@ -86,7 +91,7 @@ export default class SignupPage extends Component {
 
     return (
       <ScrollView ref='_scrollView' horizontal pagingEnabled>
-        <View
+        <KeyboardAvoidingView
           style={{
             backgroundColor: '#009788',
             width: screenWidth,
@@ -95,6 +100,7 @@ export default class SignupPage extends Component {
             flexDirection: 'column',
             justifyContent: 'center'
           }}
+          behavior="padding"
         >
           <InputSignup
             icon='user'
@@ -104,6 +110,7 @@ export default class SignupPage extends Component {
             type='default'
             onValueChanged={text => (this._inputValues.nameValue = text)}
             onStateChanged={state => (this._screenErrors.isNameError = state)}
+
           />
 
           <InputSignup
@@ -134,15 +141,18 @@ export default class SignupPage extends Component {
               }}
             />
           </View>
-        </View>
-        <View
+        </KeyboardAvoidingView>
+        <KeyboardAvoidingView
+          
           style={{
             backgroundColor: '#3e50b2',
             width: screenWidth,
+            alignItems: 'center',
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
+            flexDirection: 'column',
+            justifyContent: 'center'
           }}
+          behavior="padding"
         >
           <InputSignup
             icon='mail'
@@ -203,7 +213,7 @@ export default class SignupPage extends Component {
               }}
             />
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </ScrollView>
     )
   }
