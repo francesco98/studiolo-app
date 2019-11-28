@@ -155,7 +155,7 @@ export default class SignupPage extends Component {
           behavior="padding"
         >
           <InputSignup
-            icon='mail'
+            icon='book'
             placeholder='Matricola'
             bg='#5e76ff'
             type='numeric'
@@ -172,7 +172,8 @@ export default class SignupPage extends Component {
                 backgroundColor: '#5e76ff',
                 height: heightPicker,
                 borderRadius: 10,
-                color: '#333333'
+                color: '#333333',
+                fontFamily: 'Lato-Regular'
               }}
               onValueChange={(itemValue, itemIndex) => {
                 this.setState({ scelta: itemValue }, () =>
