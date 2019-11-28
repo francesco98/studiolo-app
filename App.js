@@ -9,6 +9,7 @@ import SignupPage from './View/Screen/Signup'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Settings from './View/Screen/Settings'
 import HomePage from './View/Screen/Home'
+import Scan from './View/Screen/Scan'
 import Icon from 'react-native-vector-icons/AntDesign'
 
 
@@ -23,6 +24,15 @@ const TabNavigator = createBottomTabNavigator(
       }
       
     },
+    Scan: {
+      screen: Scan,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) => (
+          <Icon name="plus" size={30} color={tintColor} />
+      )
+      }
+      }
+      ,
     Settings: {
       screen: Settings,
       navigationOptions: {
@@ -30,7 +40,8 @@ const TabNavigator = createBottomTabNavigator(
           <Icon name="setting" size={30} color={tintColor} />
       )
       }
-    }
+    },
+    
   },
   {
     tabBarOptions: {
@@ -61,6 +72,9 @@ Home: {
   Dashboard: TabNavigator,
   Signup: {
     screen: SignupPage
+  },
+  Scan: {
+    screen: Scan
   }
 })
 // Container of the app

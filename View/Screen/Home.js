@@ -17,6 +17,11 @@ export default class HomePage extends Component {
 
   state = { data: [] }
 
+  _scanQRCode(){
+    const { navigate } = this.props.navigation
+    navigate('Scan', {})
+  }
+
   componentDidMount () {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButton)
 
@@ -60,6 +65,7 @@ export default class HomePage extends Component {
                 data={item.lastUpdateDay}
                 ora={item.lastUpdateHour}
                 total={item.nposti}
+                onScanQRCode={() => this._scanQRCode()}
               />
             )}
           />

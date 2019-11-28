@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text} from 'react-native'
+import { StyleSheet, View, Text, TouchableHighlight} from 'react-native'
 import { Card, Badge } from 'react-native-elements'
 
 //TODO: StyleSheet
 
 export default class StudentCard extends Component{
 
+  
+
     render(){
         return(
+          <TouchableHighlight onPress={this.props.onScanQRCode} underlayColor="white">
             <Card
           title={this.props.studentName}
           titleStyle={{ fontSize: 20, fontFamily: 'Lato-Bold' }}
           wrapperStyle={{ height: 100, margin: 8 }}
           containerStyle={{borderWidth: 5}}
+          onPress={()=> this._scanQRCode()}
         >
+        
           <View
             style={{
               flex: 1,
@@ -22,6 +27,7 @@ export default class StudentCard extends Component{
               justifyContent: 'space-between'
             }}
           >
+           
             <Text style={{ fontFamily: 'Lato-Light', fontSize: 18 }}>
               Posti disponibili:
             </Text>
@@ -30,7 +36,9 @@ export default class StudentCard extends Component{
               textStyle={{ fontFamily: 'Lato-Bold', fontSize: 16 }}
               badgeStyle={{ width: 60, height: 30, backgroundColor: '#3e50b2' }}
             />
+            
           </View>
+         
           <Text
             style={{
               textAlign: 'right',
@@ -42,6 +50,7 @@ export default class StudentCard extends Component{
             {this.props.data} alle {this.props.ora}
           </Text>
         </Card>
+        </TouchableHighlight>
         );
     }
 }

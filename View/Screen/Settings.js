@@ -15,15 +15,6 @@ export default class Settings extends Component {
     }
   }
 
-  _lettura = false
-
- onSuccess = (e) => {
-    const check = e.data.substring(0, 4);
-    console.log(e.data)
-    if (check === 'http'){
-      Linking.openURL(e.data).catch((err)=> console.log('error'))
-    }
-  }
   render () {
     return (
       <SafeAreaView>
@@ -40,7 +31,6 @@ export default class Settings extends Component {
         <Text style={{ textAlign: 'center', fontFamily: 'Lato' }}>
           {User.getInstance().getMatricola()}
         </Text>
-        <QRCodeScanner onRead={this.onSuccess}/>
       </SafeAreaView>
     )
   }
