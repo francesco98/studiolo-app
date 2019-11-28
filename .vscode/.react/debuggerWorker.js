@@ -118,20 +118,19 @@ Object.prototype.toString = function() {
 };
 
 
+"use strict";
+
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @format
  */
 
 /* global __fbBatchedBridge, self, importScripts, postMessage, onmessage: true */
 
 /* eslint no-unused-vars: 0 */
-'use strict';
-
 onmessage = function () {
   var visibilityState;
 
