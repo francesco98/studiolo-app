@@ -1,93 +1,101 @@
-import Place from './Place';
+import Place from './Place'
 
 class User {
-     static myInstance = null;
+  static myInstance = null
 
-    _userID = "";
-    _facebookID = "";
-    _facebookEmail = "";
-    _firstName = "";
-    _lastName = "";
-    _token = "";
-    _firstLogin = "";
+  _userID = ''
+  _facebookID = ''
+  _facebookEmail = ''
+  _firstName = ''
+  _lastName = ''
+  _token = ''
+  _firstLogin = ''
 
-    _email = "";
-    _matricola = "";
+  _email = ''
+  _matricola = ''
 
-    _place = null;
-    _studentCenter = null;
+  _place = null
+  _studentCenter = null
 
-    static getInstance() {
-        if (User.myInstance == null) {
-            User.myInstance = new User();
-        }
-
-        return this.myInstance;
+  static getInstance () {
+    if (User.myInstance == null) {
+      User.myInstance = new User()
     }
 
-    initFromJson(data) {
-        this._token = data.token;
-        this._userID = data.user.id;
-        this._facebookID = data.user.facebookId;
-        this._facebookEmail = data.user.facebookEmail;
-        this._firstName = data.user.first_name;
-        this._lastName = data.user.last_name;
-        this._firstLogin = data.first_login;
+    return this.myInstance
+  }
 
-        if(data.user.matricola) {
-            this._matricola = data.user.matricola;
-        }
+  updateData (data) {
+    this._firstName = data.first_name
+    this._lastName = data.last_name
+    this._email = data.email
+    this._matricola = data.matricola
+    this._place = new Place()
+    this._place.initFromJson(data.place)
+  }
 
-        if(data.user.email) {
-            this._email = data.user.email;
-        }
+  initFromJson (data) {
+    this._token = data.token
+    this._userID = data.user.id
+    this._facebookID = data.user.facebookId
+    this._facebookEmail = data.user.facebookEmail
+    this._firstName = data.user.first_name
+    this._lastName = data.user.last_name
+    this._firstLogin = data.first_login
 
-        if(data.user.place) {
-            this._place = new Place();
-            this._place.initFromJson(data.user.place);
-        }
+    if (data.user.matricola) {
+      this._matricola = data.user.matricola
     }
 
-    getUserID() {
-        return this._userID;
+    if (data.user.email) {
+      this._email = data.user.email
     }
 
-    getFacebookId() {
-        return this._facebookID;
+    if (data.user.place) {
+      this._place = new Place()
+      this._place.initFromJson(data.user.place)
     }
+  }
 
-    getFacebookEmail() {
-        return this._facebookEmail;
-    }
+  getUserID () {
+    return this._userID
+  }
 
-    getFirstName() {
-        return this._firstName;
-    }
+  getFacebookId () {
+    return this._facebookID
+  }
 
-    getLastName() {
-        return this._lastName;
-    }
+  getFacebookEmail () {
+    return this._facebookEmail
+  }
 
-    getToken() {
-        return this._token;
-    }
+  getFirstName () {
+    return this._firstName
+  }
 
-    getFirstLogin() {
-        return this._firstLogin;
-    }
+  getLastName () {
+    return this._lastName
+  }
 
-    getPlace() {
-        return this._place;
-    }
+  getToken () {
+    return this._token
+  }
 
-    getEmail() {
-        return this._email;
-    }
+  getFirstLogin () {
+    return this._firstLogin
+  }
 
-    getMatricola() {
-        return this._matricola;
-    }
+  getPlace () {
+    return this._place
+  }
 
+  getEmail () {
+    return this._email
+  }
+
+  getMatricola () {
+    return this._matricola
+  }
 }
 
-export default User;
+export default User

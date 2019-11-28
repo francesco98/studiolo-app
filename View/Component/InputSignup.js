@@ -9,31 +9,32 @@ export default class InputSignup extends Component {
   state = { isError: false }
 
   _validate (type, text) {
+
+    this.props.onValueChanged(text);
+
+    let isError = false
+
     if (type == 'email-address') {
       let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
       if (reg.test(text) === false) {
         this._errorMessage = 'Email non corretta!'
-        this.setState({ isError: true })
-        return
+        isError = true;
       }
     } else if (type == 'default') {
       if (text.length < 3) {
         this._errorMessage = 'Troppo corto!'
-        this.setState({ isError: true })
-        this.props.onStateChanged(this.state.isError)
-        return
+        isError = true;
       }
     } else if (type == 'numeric') {
       let reg = /^\d{6}$/
       if (reg.test(text) === false) {
         this._errorMessage = 'Matricola non corretta'
-        this.setState({ isError: true })
-        return
+        isError = true;
       }
     }
 
-    this.setState({ isError: false })
-    console.log(this.state.isError)
+    this.setState({ isError: isError })
+    this.props.onStateChanged(isError)
   }
 
   render () {
