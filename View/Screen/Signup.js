@@ -8,9 +8,18 @@ import {
   BackHandler
 } from 'react-native'
 import { Button, Input } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/AntDesign'
+import InputSignup from '../Component/InputSignup'
+import User from '../../Model/User'
 
 export default class SignupPage extends Component {
+  _screenErrors = {
+    isNameError: false,
+    isLastError: false,
+    isEmailError: true,
+    isMatricolaError: true
+  }
+
   static navigationOptions = {
     title: 'Signup',
     headerLeft: null,
@@ -30,6 +39,7 @@ export default class SignupPage extends Component {
   handleBackButton () {
     return true
   }
+
   render () {
     let screenWidth = Dimensions.get('window').width
     let screenHeight = Dimensions.get('window').height
@@ -39,48 +49,44 @@ export default class SignupPage extends Component {
           style={{
             backgroundColor: '#009788',
             width: screenWidth,
+            alignItems: 'center',
             flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
+            flexDirection: 'column',
+            justifyContent: 'center'
           }}
         >
-          <Text style={styles.Text}> Schermata 1 </Text>
-          <Input placeholder={'Email address'} />
+          <InputSignup
+            icon='user'
+            placeholder='Nome'
+            bg='#00b5a1'
+            defaultValue={User.getInstance().getFirstName()}
+            type='default'
+            onStateChanged={state => (this._screenErrors.isNameError = state)}
+          />
+
+          <InputSignup
+            icon='user'
+            placeholder='Cognome'
+            bg='#00b5a1'
+            defaultValue={User.getInstance().getLastName()}
+            type='default'
+            onStateChanged={state => (this._screenErrors.isLastError = state)}
+          />
+
+          <InputSignup
+            icon='mail'
+            placeholder='Email universitaria'
+            bg='#00b5a1'
+            type='email-address'
+            onStateChanged={state => (this._screenErrors.isEmailError = state)}
+          />
+
           <View style={styles.ArrowRight}>
             <Icon
-              name='chevron-right'
+              name='right'
               size={50}
               onPress={() => {
                 this.refs._scrollView.scrollTo({ x: screenWidth })
-              }}
-            />
-          </View>
-        </View>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: screenWidth,
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <Text style={styles.Text}> Schermata 2 </Text>
-          <View style={styles.ArrowRight}>
-            <Icon
-              name='chevron-right'
-              size={50}
-              onPress={() => {
-                this.refs._scrollView.scrollTo({ x: 2 * screenWidth })
-              }}
-            />
-          </View>
-          <View style={styles.ArrowLeft}>
-            <Icon
-              name='chevron-left'
-              size={50}
-              onPress={() => {
-                this.refs._scrollView.scrollTo({ x: 0 })
               }}
             />
           </View>
@@ -94,13 +100,21 @@ export default class SignupPage extends Component {
             alignItems: 'center'
           }}
         >
-          <Text style={styles.Text}> Schermata 3 </Text>
+           <InputSignup
+            icon='mail'
+            placeholder='Matricola'
+            bg='#5e76ff'
+            type='numeric'
+            onStateChanged={state =>
+              (this._screenErrors.isMatricolaError = state)
+            }
+          />
           <View style={styles.ArrowLeft}>
             <Icon
-              name='chevron-left'
+              name='left'
               size={50}
               onPress={() => {
-                this.refs._scrollView.scrollTo({ x: screenWidth })
+                this.refs._scrollView.scrollTo({ x: 0 })
               }}
             />
           </View>
@@ -126,8 +140,15 @@ const styles = StyleSheet.create({
     left: 30,
     bottom: 30
   },
-
-  Inputs: {
-    // inserire styling per le caselle di testo
-  }
+  InputContainer: {
+    borderBottomWidth: 0,
+    borderRadius: 10,
+    backgroundColor: '#00b5a1',
+    padding: 10
+  },
+  InputText: {
+    fontFamily: 'Lato-Regular',
+    color: '#333333'
+  },
+  LeftIconStyle: { paddingRight: 10 }
 })
