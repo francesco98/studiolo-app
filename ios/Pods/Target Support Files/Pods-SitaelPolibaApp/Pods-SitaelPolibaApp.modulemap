@@ -1,0 +1,6 @@
+module Pods_SitaelPolibaApp {
+  umbrella header "Pods-SitaelPolibaApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
