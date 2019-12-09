@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { StyleSheet, View, SafeAreaView, Linking } from 'react-native'
 import AppBar from '../Component/AppBar'
 import User from '../../Model/User'
+import Constants from '../../Model/Constants'
 import QRCodeScanner from 'react-native-qrcode-scanner'
 import { BleManager } from 'react-native-ble-plx'
+import { Buffer } from 'buffer'
 
 export default class Scan extends Component {
   _deviceId = ''
@@ -39,16 +41,41 @@ export default class Scan extends Component {
             return
           }
 
-          if (device.name === 'HC-06') {
-            this.manager.stopDeviceScan()
+          if (device.name === 'DSD TECH') {
+            this._bleManager.stopDeviceScan()
             device
               .connect()
               .then(device => {
-                this.info('Discovering services and characteristics')
                 return device.discoverAllServicesAndCharacteristics()
               })
               .then(device => {
-                alert(device)
+                return device.services()
+              })
+              .then(services => {
+                return services[2].characteristics()
+              })
+              .then(characteristics => {
+                characteristics[0].monitor((e, c) => {
+                  if (e) {
+                    alert(e.message)
+                    return
+                  }
+                  const buffer = new Buffer(c.value, 'base64')
+                  const bufStr = buffer.toString()
+
+                  alert(bufStr)
+                })
+
+                return characteristics[0]
+              })
+              .then(characteristic => {
+                const buffer = new Buffer("Occupo")
+                const bufBase64 = buffer.toString('base64');
+
+                characteristic.writeWithoutResponse(bufBase64);
+              })
+              .catch(error => {
+                alert(error)
               })
           }
         })
@@ -65,7 +92,9 @@ export default class Scan extends Component {
     return (
       <SafeAreaView>
         <AppBar />
-        <QRCodeScanner onRead={this.onSuccess} />
+        <View>
+          <QRCodeScanner onRead={this.onSuccess} />
+        </View>
       </SafeAreaView>
     )
   }

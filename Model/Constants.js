@@ -9,6 +9,11 @@ class Constants {
   // Key-Value per AsyncStorange
   static loginDoneKey = '@loginDone'
   static loginDoneValue = '1'
+
+  //BLE
+  static serviceUUID = "0000FFE0-0000-1000-8000-00805F9B34FB";
+  static characteristicUUID = "0000FFE1-0000-1000-8000-00805F9B34FB";
+
 }
 
 export default Constants
