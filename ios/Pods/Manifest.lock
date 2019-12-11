@@ -34,8 +34,11 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
+  - GCDWebServer (3.5.3):
+    - GCDWebServer/Core (= 3.5.3)
+  - GCDWebServer/Core (3.5.3)
   - glog (0.3.5)
-  - Permission-Camera (2.0.4):
+  - Permission-Camera (2.0.8):
     - RNPermissions
   - RCTRequired (0.61.2)
   - RCTTypeSafety (0.61.2):
@@ -204,13 +207,13 @@ PODS:
     - React
     - react-native-ble-plx-swift
   - react-native-ble-plx-swift (1.1.0)
-  - react-native-camera (3.13.0):
+  - react-native-camera (3.13.1):
     - React
-    - react-native-camera/RCT (= 3.13.0)
-    - react-native-camera/RN (= 3.13.0)
-  - react-native-camera/RCT (3.13.0):
+    - react-native-camera/RCT (= 3.13.1)
+    - react-native-camera/RN (= 3.13.1)
+  - react-native-camera/RCT (3.13.1):
     - React
-  - react-native-camera/RN (3.13.0):
+  - react-native-camera/RN (3.13.1):
     - React
   - react-native-fbsdk (1.1.1):
     - React
@@ -263,11 +266,16 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.2)
   - ReactNativeART (1.0.3):
     - React
+  - RealmJS (3.5.0):
+    - GCDWebServer
+    - React
+  - RNBackgroundFetch (2.0.8):
+    - React
   - RNCAsyncStorage (1.6.3):
     - React
   - RNGestureHandler (1.5.2):
     - React
-  - RNPermissions (2.0.4):
+  - RNPermissions (2.0.8):
     - React
   - RNReanimated (1.4.0):
     - React
@@ -310,6 +318,8 @@ DEPENDENCIES:
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "ReactNativeART (from `../node_modules/@react-native-community/art`)"
+  - RealmJS (from `../node_modules/realm`)
+  - RNBackgroundFetch (from `../node_modules/react-native-background-fetch`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
@@ -323,6 +333,7 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - GCDWebServer
 
 EXTERNAL SOURCES:
   BVLinearGradient:
@@ -387,6 +398,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeART:
     :path: "../node_modules/@react-native-community/art"
+  RealmJS:
+    :path: "../node_modules/realm"
+  RNBackgroundFetch:
+    :path: "../node_modules/react-native-background-fetch"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNGestureHandler:
@@ -410,8 +425,9 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 1b0cf04df0370b37404213157b060d6666ede814
   FBSDKShareKit: abc29e1bb4f9f59f679adf1ae191006d68455f96
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
+  GCDWebServer: c0ab22c73e1b84f358d1e2f74bf6afd1c60829f2
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  Permission-Camera: 907d26263ce6cf10983b07e8801a6939f8b74567
+  Permission-Camera: f9a7b0b01c71febe320436aa74630f23c9483547
   RCTRequired: c639d59ed389cfb1f1203f65c2ea946d8ec586e2
   RCTTypeSafety: dc23fb655d6c77667c78e327bf661bc11e3b8aec
   React: 7e586e5d7bec12b91c1a096826b0fc9ab1da7865
@@ -423,7 +439,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-ble-plx: 05e16667ebf56cf802986379fd58a377847885e8
   react-native-ble-plx-swift: e0d041529bd7ae66eb9731123eca3df3d132e8ec
-  react-native-camera: 05b9bf888b87885b60ef4f56f8027b41b739b40b
+  react-native-camera: 1df7f9a047591bbc2c9a7ec80bd6412d3c19579f
   react-native-fbsdk: b94a83971c496a35803f38b921aec6d637ba07b5
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
@@ -436,13 +452,15 @@ SPEC CHECKSUMS:
   React-RCTVibration: fb54c732fd20405a76598e431aa2f8c2bf527de9
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
   ReactNativeART: 7d65fa7e1469cbcfa351070cdd3b6135ad60c799
+  RealmJS: eb2861a57dbdd5243d2f27af0f5d1cbe2b3b5129
+  RNBackgroundFetch: 71dd37d69a0f0a173b4aafd65e7169e7dd96946a
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   RNGestureHandler: 946a7691e41df61e2c4b1884deab41a4cdc3afff
-  RNPermissions: 35959d09546f1cd60c129ee128146a120ea595c3
+  RNPermissions: 923c1506d0bde387fbcfc18a8f87945806d03c19
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
 
-PODFILE CHECKSUM: dd593bd634c96eb6a92a94fb13399fa626f36848
+PODFILE CHECKSUM: 496be693cff861675b84c72cd0ad1aaa33fbf0a2
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4
