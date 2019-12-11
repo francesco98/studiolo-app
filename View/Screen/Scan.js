@@ -52,7 +52,12 @@ export default class Scan extends Component {
                 return device.services()
               })
               .then(services => {
-                return services[2].characteristics()
+                let i = 0;
+                for(i = 0; i < services.length; i++) {
+                  if(services[i].uuid.toUpperCase() === Constants.serviceUUID.toUpperCase()) {
+                    return services[i].characteristics()
+                  }
+                }
               })
               .then(characteristics => {
                 characteristics[0].monitor((e, c) => {
@@ -85,9 +90,6 @@ export default class Scan extends Component {
     })
   }
   render () {
-    this._bleManager.state().then(state => {
-      alert(state)
-    })
 
     return (
       <SafeAreaView>
