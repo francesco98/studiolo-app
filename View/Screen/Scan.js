@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, SafeAreaView, Linking } from 'react-native'
+import { StyleSheet, View, SafeAreaView, Linking, Platform } from 'react-native'
 import AppBar from '../Component/AppBar'
 import User from '../../Model/User'
 import Constants from '../../Model/Constants'
@@ -10,6 +10,19 @@ import { Buffer } from 'buffer'
 export default class Scan extends Component {
   _deviceId = ''
   _bleManager = new BleManager()
+
+  constructor () {
+    super()
+
+    if (Platform.OS === 'ios') {
+      this._bleManager = new BleManager({
+        restoreStateIdentifier: 'BLEBackgroundMode',
+        restoreStateFunction: bleRestoredState => {
+          console.log('BLE RESTORED')
+        }
+      })
+    }
+  }
 
   static navigationOptions = {
     title: 'Scan',
@@ -52,9 +65,12 @@ export default class Scan extends Component {
                 return device.services()
               })
               .then(services => {
-                let i = 0;
-                for(i = 0; i < services.length; i++) {
-                  if(services[i].uuid.toUpperCase() === Constants.serviceUUID.toUpperCase()) {
+                let i = 0
+                for (i = 0; i < services.length; i++) {
+                  if (
+                    services[i].uuid.toUpperCase() ===
+                    Constants.serviceUUID.toUpperCase()
+                  ) {
                     return services[i].characteristics()
                   }
                 }
@@ -74,10 +90,10 @@ export default class Scan extends Component {
                 return characteristics[0]
               })
               .then(characteristic => {
-                const buffer = new Buffer("Occupo")
-                const bufBase64 = buffer.toString('base64');
+                const buffer = new Buffer('Occupo')
+                const bufBase64 = buffer.toString('base64')
 
-                characteristic.writeWithoutResponse(bufBase64);
+                characteristic.writeWithoutResponse(bufBase64)
               })
               .catch(error => {
                 alert(error)
@@ -90,7 +106,6 @@ export default class Scan extends Component {
     })
   }
   render () {
-
     return (
       <SafeAreaView>
         <AppBar />
