@@ -17,12 +17,12 @@ import BackgroundTask from 'react-native-background-task'
 import AsyncStorage from '@react-native-community/async-storage'
 
 BackgroundTask.define(async () => {
-  let value = await AsyncStorage.getItem('prova2')
+  let value = await AsyncStorage.getItem('prova3')
 
   if (value !== null) {
-    await AsyncStorage.setItem('prova2', value + 5)
+    await AsyncStorage.setItem('prova3', 'Valore aggiornato')
   } else {
-    await AsyncStorage.setItem('prova2', 0)
+    await AsyncStorage.setItem('prova3', 'Valore inizializzato')
   }
 
   BackgroundTask.finish()
@@ -44,9 +44,8 @@ export default class HomePage extends Component {
   _retrieveStatus () {
     alert('VALUE RETRIEVED')
 
-    AsyncStorage.getItem('prova2')
-      .then(value => this.setState({ status: value }))
-      .catch(error => this.setState({ status: 0 }))
+    AsyncStorage.getItem('prova3').then(value => this.setState({ status: value }))
+
   }
 
   componentDidMount () {
@@ -77,12 +76,12 @@ export default class HomePage extends Component {
 
     const reason = status.unavailableReason
     if (reason === BackgroundTask.UNAVAILABLE_DENIED) {
-      Alert.alert(
+      alert(
         'Denied',
         'Please enable background "Background App Refresh" for this app'
       )
     } else if (reason === BackgroundTask.UNAVAILABLE_RESTRICTED) {
-      Alert.alert(
+      alert(
         'Restricted',
         'Background tasks are restricted on your device'
       )
@@ -98,8 +97,6 @@ export default class HomePage extends Component {
   }
 
   render () {
-    console.log('CALLED RENDER')
-
     // TODO: FlatList Styling
     return (
       <SafeAreaView>
