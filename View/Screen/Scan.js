@@ -1,29 +1,14 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, SafeAreaView, Linking, Platform } from 'react-native'
+import { Text, StyleSheet, View, SafeAreaView } from 'react-native'
+
 import AppBar from '../Component/AppBar'
 import User from '../../Model/User'
+import Context from '../../Model/Context'
 import Constants from '../../Model/Constants'
-import QRCodeScanner from 'react-native-qrcode-scanner'
-import { BleManager } from 'react-native-ble-plx'
-import { Buffer } from 'buffer'
+
+import ScanComponent from '../Component/ScanComponent'
 
 export default class Scan extends Component {
-  _deviceId = ''
-  _bleManager = new BleManager()
-
-  constructor () {
-    super()
-
-    if (Platform.OS === 'ios') {
-      this._bleManager = new BleManager({
-        restoreStateIdentifier: 'BLEBackgroundMode',
-        restoreStateFunction: bleRestoredState => {
-          console.log('BLE RESTORED')
-        }
-      })
-    }
-  }
-
   static navigationOptions = {
     title: 'Scan',
     headerLeft: null,
@@ -33,85 +18,97 @@ export default class Scan extends Component {
     }
   }
 
+  state = {
+    isDeviceConnecting: false,
+    idDeviceConnected: false
+  }
+
   componentDidMount () {
-    this._bleManager.onStateChange(state => {
-      if (state === 'PoweredOn') {
-        alert('BL OK iOS')
+    Context.getInstance().subscribeToBleStatus((result, error) => {
+      if (!result) {
+        alert(error)
       }
     })
   }
 
-  onSuccess = qrcode => {
-    const deviceId = qrcode.data
+  _onDeviceIdObtanied (deviceModel, operation) {
+    this.setState({ isDeviceConnecting: true, isDeviceConnected: false })
 
-    this._deviceId = deviceId
+    if (operation == Constants.NOT_FREE_STATUS) {
+      alert('Ops... Il posto sembra non essere libero!')
+      this.setState({ isDeviceConnecting: false, isDeviceConnected: false })
+    } else if (operation == Constants.TO_RESERVE_STATUS) {
+      alert('La funzione è in sviluppo, stai calmo!')
+      this.setState({ isDeviceConnecting: false, isDeviceConnected: false })
+    } else if (operation == Constants.TO_HOLD_STATUS) {
+      Context.getInstance().connectToDevice(
+        Platform.OS == 'ios' ? deviceModel.getUUID() : deviceModel.getMac(),
+        (result, error, device, characteristic) => {
+          if (result) {
+            this.setState({ isDeviceConnecting: true, isDeviceConnected: true })
 
-    this._bleManager.state().then(state => {
-      if (state === 'PoweredOn') {
-        this._bleManager.startDeviceScan(null, null, (error, device) => {
-          if (error) {
-            alert(error.message)
-            return
-          }
+            Context.getInstance().sendBleMessage(
+              characteristic,
+              Constants.MESSAGE_TO_HOLD
+            )
 
-          if (device.name === 'DSD TECH') {
-            this._bleManager.stopDeviceScan()
-            device
-              .connect()
-              .then(device => {
-                return device.discoverAllServicesAndCharacteristics()
-              })
-              .then(device => {
-                return device.services()
-              })
-              .then(services => {
-                let i = 0
-                for (i = 0; i < services.length; i++) {
-                  if (
-                    services[i].uuid.toUpperCase() ===
-                    Constants.serviceUUID.toUpperCase()
-                  ) {
-                    return services[i].characteristics()
-                  }
+            Context.getInstance().subscribeToBleCharacteristic(
+              characteristic,
+              (result, value) => {
+                if (result) {
+                  // TODO sync with server
+                  alert(value)
+                } else {
+                  alert(value)
                 }
-              })
-              .then(characteristics => {
-                characteristics[0].monitor((e, c) => {
-                  if (e) {
-                    alert(e.message)
-                    return
-                  }
-                  const buffer = new Buffer(c.value, 'base64')
-                  const bufStr = buffer.toString()
-
-                  alert(bufStr)
-                })
-
-                return characteristics[0]
-              })
-              .then(characteristic => {
-                const buffer = new Buffer('Occupo')
-                const bufBase64 = buffer.toString('base64')
-
-                characteristic.writeWithoutResponse(bufBase64)
-              })
-              .catch(error => {
-                alert(error)
-              })
+              }
+            )
+          } else {
+            alert(error)
+            this.setState({
+              isDeviceConnecting: false,
+              isDeviceConnected: false
+            })
           }
-        })
-      } else {
-        alert('Devi abilitare il bluetooth del dispositivo')
-      }
-    })
+        }
+      )
+    } else {
+      alert('Operation not allowed!')
+      this.setState({ isDeviceConnecting: false, isDeviceConnected: false })
+    }
   }
+
   render () {
-    return (
+    return !this.state.isDeviceConnecting && !this.state.isDeviceConnected ? (
+      <ScanComponent
+        onResult={(deviceId, operation) =>
+          this._onDeviceIdObtanied(deviceId, operation)
+        }
+      />
+    ) : (
       <SafeAreaView>
         <AppBar />
-        <View>
-          <QRCodeScanner onRead={this.onSuccess} />
-        </View>
+        {!this.state.isDeviceConnected ? (
+          <Text
+            style={{
+              fontFamily: 'Lato-Regular',
+              textAlign: 'center',
+              fontSize: 24
+            }}
+          >
+            Connessione in corso...
+          </Text>
+        ) : (
+          <Text
+            style={{
+              fontFamily: 'Lato-Regular',
+              textAlign: 'center',
+              fontSize: 24
+            }}
+          >
+            Connesso (TO DO){' '}
+          </Text>
+        )}
       </SafeAreaView>
     )
   }

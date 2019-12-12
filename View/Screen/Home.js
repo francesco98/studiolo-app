@@ -42,8 +42,6 @@ export default class HomePage extends Component {
   }
 
   _retrieveStatus () {
-    alert('VALUE RETRIEVED')
-
     AsyncStorage.getItem('prova3').then(value => this.setState({ status: value }))
 
   }
