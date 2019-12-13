@@ -95,7 +95,7 @@ export default class HomePage extends Component {
   }
 
   render () {
-    // TODO: FlatList Styling
+  
     return (
       <View>
         <AppBar />

@@ -55,7 +55,7 @@ export default class Settings extends Component {
         }
     <Button
     type='solid'
-    style={{paddingHorizontal: 50, paddingTop: 60, }}
+    containerStyle={{paddingHorizontal: 50, paddingTop: 60, }}
     buttonStyle={{backgroundColor: '#3e50b2'}}
   icon={
     <Icon

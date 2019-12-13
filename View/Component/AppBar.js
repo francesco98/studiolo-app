@@ -18,7 +18,7 @@ export default class AppBar extends Component {
           // rightComponent={{ icon: 'access-alarm', color: '#fff', marginTop: -30 }}
           backgroundColor={'#009788'}
           containerStyle={{
-            justifyContent: 'space-around', height: 120
+            justifyContent: 'space-around', height: 100
           }}
           ViewComponent={LinearGradient} // Don't forget this!
           linearGradientProps={{
