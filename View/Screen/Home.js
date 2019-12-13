@@ -33,7 +33,8 @@ export default class HomePage extends Component {
 
   state = {
     data: [],
-    status: 0
+    status: 0,
+    isListFetching: false,
   }
 
   _scanQRCode () {
@@ -42,8 +43,14 @@ export default class HomePage extends Component {
   }
 
   _retrieveStatus () {
-    AsyncStorage.getItem('prova3').then(value => this.setState({ status: value }))
-
+    AsyncStorage.getItem('prova3').then(value =>
+      this.setState({ status: value })
+    )
+  }
+  _onRefresh () {
+    this.setState({ isListFetching: true }, function () {
+      this._getApiData()
+    })
   }
 
   componentDidMount () {
@@ -53,11 +60,13 @@ export default class HomePage extends Component {
     this.checkStatus()
 
     this._retrieveStatus()
-
+    this._getApiData()
+  }
+  _getApiData () {
     this._homeController
       .getStudentCenterInfo()
       .then(d => {
-        this.setState({ data: d })
+        this.setState({ data: d, isListFetching: false,   })
       })
       .catch(error => {
         alert(error)
@@ -79,10 +88,7 @@ export default class HomePage extends Component {
         'Please enable background "Background App Refresh" for this app'
       )
     } else if (reason === BackgroundTask.UNAVAILABLE_RESTRICTED) {
-      alert(
-        'Restricted',
-        'Background tasks are restricted on your device'
-      )
+      alert('Restricted', 'Background tasks are restricted on your device')
     }
   }
 
@@ -95,7 +101,6 @@ export default class HomePage extends Component {
   }
 
   render () {
-  
     return (
       <View>
         <AppBar />
@@ -113,6 +118,8 @@ export default class HomePage extends Component {
         </View>
         <View style={{}}>
           <FlatList
+            onRefresh={() => this._onRefresh()}
+            refreshing={this.state.isListFetching}
             data={this.state.data}
             renderItem={({ item }) => (
               <StudentCard
