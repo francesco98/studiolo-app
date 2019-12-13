@@ -7,6 +7,7 @@ import Context from '../../Model/Context'
 import Constants from '../../Model/Constants'
 
 import ScanComponent from '../Component/ScanComponent'
+import SitManagement from '../Component/SitManagement'
 
 export default class Scan extends Component {
   static navigationOptions = {
@@ -19,8 +20,8 @@ export default class Scan extends Component {
   }
 
   state = {
-    isDeviceConnecting: false,
-    idDeviceConnected: false
+    isDeviceConnecting: false, //
+    idDeviceConnected: false //
   }
 
   componentDidMount () {
@@ -86,7 +87,7 @@ export default class Scan extends Component {
         }
       />
     ) : (
-      <SafeAreaView>
+      <View>
         <AppBar />
         {!this.state.isDeviceConnected ? (
           <Text
@@ -99,17 +100,9 @@ export default class Scan extends Component {
             Connessione in corso...
           </Text>
         ) : (
-          <Text
-            style={{
-              fontFamily: 'Lato-Regular',
-              textAlign: 'center',
-              fontSize: 24
-            }}
-          >
-            Connesso (TO DO){' '}
-          </Text>
+          <SitManagement />
         )}
-      </SafeAreaView>
+      </View>
     )
   }
 }

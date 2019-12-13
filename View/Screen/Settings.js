@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, SafeAreaView, Linking,} from 'react-native'
-import { Header } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { StyleSheet, View, Text,} from 'react-native'
+import { ListItem } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/AntDesign'
 import AppBar from '../Component/AppBar'
 import User from '../../Model/User'
-import QRCodeScanner from 'react-native-qrcode-scanner'
 export default class Settings extends Component {
   static navigationOptions = {
     title: 'Settings',
@@ -15,23 +14,66 @@ export default class Settings extends Component {
     }
   }
 
+  static list = [
+    {
+      name: User.getInstance().getFirstName(),
+      icon: 'user'
+      
+    },
+    {
+      name: User.getInstance().getLastName(),
+      icon: 'user'
+    },
+    {
+      name: User.getInstance().getEmail(),
+      icon: 'email'
+    },
+    {
+      name: User.getInstance().getMatricola(),
+      icon: 'book'
+    }
+
+  ]
+
   render () {
+    const list = [
+    {
+      name: User.getInstance().getFirstName(),
+      icon: 'user'
+      
+    },
+    {
+      name: User.getInstance().getLastName(),
+      icon: 'user'
+    },
+    {
+      name: User.getInstance().getEmail(),
+      icon: 'email'
+    },
+    {
+      name: User.getInstance().getMatricola(),
+      icon: 'book'
+    }
+
+  ]
     return (
-      <SafeAreaView>
+      <View>
         <AppBar />
-        <Text style={{ textAlign: 'center', fontFamily: 'Lato' }}>
-          {User.getInstance().getFirstName()}
-        </Text>
-        <Text style={{ textAlign: 'center', fontFamily: 'Lato' }}>
-          {User.getInstance().getLastName()}
-        </Text>
-        <Text style={{ textAlign: 'center', fontFamily: 'Lato' }}>
-          {User.getInstance().getEmail()}
-        </Text>
-        <Text style={{ textAlign: 'center', fontFamily: 'Lato' }}>
-          {User.getInstance().getMatricola()}
-        </Text>
-      </SafeAreaView>
+        <View>
+        {
+    list.map((l, i) => (
+      <ListItem
+        key={i}
+        leftAvatar={
+          <Icon name= {i.icon}/>
+        }
+        title={l.name}
+        bottomDivider
+      />
+    ))
+  }
+  </View>
+      </View>
     )
   }
 }

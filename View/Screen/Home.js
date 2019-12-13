@@ -97,7 +97,7 @@ export default class HomePage extends Component {
   render () {
     // TODO: FlatList Styling
     return (
-      <SafeAreaView>
+      <View>
         <AppBar />
         <Button
           title={'retrieve status'}
@@ -126,7 +126,7 @@ export default class HomePage extends Component {
             )}
           />
         </View>
-      </SafeAreaView>
+      </View>
     )
   }
 }
