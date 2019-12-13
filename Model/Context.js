@@ -1,7 +1,8 @@
-import { Buffer } from 'buffer'
-import { BleManager } from 'react-native-ble-plx'
-import { Platform } from 'react-native'
+import {Buffer} from 'buffer'
+import {BleManager} from 'react-native-ble-plx'
+import {Platform} from 'react-native'
 import Constants from './Constants'
+import type from 'type-detect'
 
 export default class Context {
   static myInstance = null
@@ -21,7 +22,7 @@ export default class Context {
         restoreStateIdentifier: 'BLEBackgroundMode',
         restoreStateFunction: bleRestoredState => {
           console.log('BLE RESTORED')
-        }
+        },
       })
     } else {
       this._bleManager = new BleManager()
@@ -57,7 +58,12 @@ export default class Context {
           if (error || Date.now() - timeBefore > 10 * 1000) {
             this._bleManager.stopDeviceScan()
 
-            listener(false, error ? error.message : "Connessione fallita!", null, null)
+            listener(
+              false,
+              error ? error.message : 'Connessione fallita!',
+              null,
+              null,
+            )
           }
 
           /*
@@ -132,5 +138,51 @@ export default class Context {
   // Allow you to unsubscribe from subscribe type method
   stopToSubscribe (subscription) {
     subscription.remove()
+  }
+
+  //Listeners
+
+  _Listeners = {
+    count: 0,
+    refs: {},
+  }
+
+  addEventListener (eventName, callback) {
+    if (type(eventName) === 'string' && type(callback) === 'function') {
+      this._Listeners.count++
+      const eventId = 'l' + this._Listeners.count
+      this._Listeners.refs[eventId] = {
+        name: eventName,
+        callback,
+      }
+      return eventId
+    }
+    return false
+  }
+
+  removeEventListener (id) {
+    if (type(id) === 'string') {
+      return delete this._Listeners.refs[id]
+    }
+    return false
+  }
+
+  removeAllListeners () {
+    let removeError = false
+    Object.keys(this._Listeners.refs).forEach(_id => {
+      const removed = delete this._Listeners.refs[_id]
+      removeError = !removeError ? !removed : removeError
+    })
+    return !removeError
+  }
+
+  emitEvent (eventName, data) {
+    Object.keys(this._Listeners.refs).forEach(_id => {
+      if (
+        this._Listeners.refs[_id] &&
+        eventName === this._Listeners.refs[_id].name
+      )
+        this._Listeners.refs[_id].callback(data)
+    })
   }
 }

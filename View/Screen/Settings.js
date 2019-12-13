@@ -4,6 +4,8 @@ import { ListItem, Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/AntDesign'
 import AppBar from '../Component/AppBar'
 import User from '../../Model/User'
+import Context from '../../Model/Context'
+
 export default class Settings extends Component {
   static navigationOptions = {
     title: 'Settings',
@@ -12,6 +14,12 @@ export default class Settings extends Component {
     headerStyle: {
       display: 'none'
     }
+  }
+
+  componentDidMount () {
+    Context.getInstance().addEventListener('userDataChanged', (userData) => {
+      this.forceUpdate();
+    })
   }
 
 
