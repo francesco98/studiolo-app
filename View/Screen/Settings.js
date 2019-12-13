@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Text,} from 'react-native'
-import { ListItem } from 'react-native-elements'
+import { ListItem, Button } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/AntDesign'
 import AppBar from '../Component/AppBar'
 import User from '../../Model/User'
@@ -14,28 +14,9 @@ export default class Settings extends Component {
     }
   }
 
-  static list = [
-    {
-      name: User.getInstance().getFirstName(),
-      icon: 'user'
-      
-    },
-    {
-      name: User.getInstance().getLastName(),
-      icon: 'user'
-    },
-    {
-      name: User.getInstance().getEmail(),
-      icon: 'email'
-    },
-    {
-      name: User.getInstance().getMatricola(),
-      icon: 'book'
-    }
-
-  ]
 
   render () {
+    const { navigate } = this.props.navigation
     const list = [
     {
       name: User.getInstance().getFirstName(),
@@ -48,7 +29,7 @@ export default class Settings extends Component {
     },
     {
       name: User.getInstance().getEmail(),
-      icon: 'email'
+      icon: 'mail'
     },
     {
       name: User.getInstance().getMatricola(),
@@ -59,20 +40,35 @@ export default class Settings extends Component {
     return (
       <View>
         <AppBar />
-        <View>
+
         {
     list.map((l, i) => (
-      <ListItem
+      <ListItem 
         key={i}
         leftAvatar={
-          <Icon name= {i.icon}/>
+          <Icon name={l.icon} />
         }
         title={l.name}
         bottomDivider
       />
     ))
+        }
+    <Button
+    type='solid'
+    style={{paddingHorizontal: 50, paddingTop: 60, }}
+    buttonStyle={{backgroundColor: '#3e50b2'}}
+  icon={
+    <Icon
+      name="sync"
+      size={18}
+      color="white"
+      style={{paddingRight: 20}}
+    />
   }
-  </View>
+  title="Aggiorna i tuoi dati"
+  onPress={()=> navigate('Signup', {})}
+
+/>
       </View>
     )
   }
