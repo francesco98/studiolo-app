@@ -12,13 +12,13 @@ export default class AppBar extends Component {
           centerComponent={
             <Image
               source={require('../../assets/images/LogoStudiolo.png')}
-              style={{ width: 150, height: 50, marginTop: -30 }}
+              style={{ width: 150, height: 50, marginTop: 0 }}
             />
           }
           // rightComponent={{ icon: 'access-alarm', color: '#fff', marginTop: -30 }}
           backgroundColor={'#009788'}
           containerStyle={{
-            justifyContent: 'space-around'
+            justifyContent: 'space-around', height: 100
           }}
           ViewComponent={LinearGradient} // Don't forget this!
           linearGradientProps={{

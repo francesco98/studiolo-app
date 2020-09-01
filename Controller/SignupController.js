@@ -1,6 +1,7 @@
 import React from 'react'
 import Constants from '../Model/Constants'
 import User from '../Model/User'
+import Context from '../Model/Context'
 
 export default class SignupController {
   getUniversities () {
@@ -35,6 +36,8 @@ export default class SignupController {
         .then(data => {
           
           User.getInstance().updateData(data.user);
+
+          Context.getInstance().emitEvent('userDataChanged', User.getInstance());
 
           resolve(data.result)
         })

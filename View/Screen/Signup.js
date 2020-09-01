@@ -182,7 +182,7 @@ export default class SignupPage extends Component {
               }}
             >
               {this.state.universities.map(v => {
-                return <Picker.Item label={v.name} value={v.id} />
+                return <Picker.Item label={v.name} value={v.id} key={v.id} />
               })}
             </Picker>
           </View>

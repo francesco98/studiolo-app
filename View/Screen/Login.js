@@ -85,7 +85,7 @@ export default class Login extends Component {
 
     return (
       <LinearGradient colors={['#3e50b2', '#009788']} style={styles.container}>
-        <SafeAreaView>
+        <View>
           <View style={styles.container}>
             <View />
             <Image
@@ -94,11 +94,13 @@ export default class Login extends Component {
             />
             {condtionalViews}
           </View>
-        </SafeAreaView>
+        </View> 
       </LinearGradient>
     )
   }
 }
+
+//SE NON FUNZIONA: SAFEAREAVIEW AL POSTO DI VIEW DOPO LINEAR GRADIENT
 
 const styles = StyleSheet.create({
   container: {
